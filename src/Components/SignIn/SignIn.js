@@ -1,19 +1,25 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useLocation, useHistory } from "react-router-dom";
 import { initializeApp } from "firebase/app";
 import firebaseConfig from "../../firebase.config";
-import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import {
+  getAuth,
+  signInWithPopup,
+  GoogleAuthProvider,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 import { UserContext } from "../../App";
 
 const SignIn = () => {
   const location = useLocation();
   const history = useHistory();
+  const [user, setUser] = useState({});
   const [loginUser, setLoginUser] = useContext(UserContext);
   let { from } = location.state || { from: { pathname: "/" } };
   const app = initializeApp(firebaseConfig);
   const auth = getAuth();
   const googleProvider = new GoogleAuthProvider();
-  if(loginUser.email){
+  if (loginUser.email) {
     history.replace(from);
   }
   const loggedInByGoogle = () => {
@@ -27,35 +33,61 @@ const SignIn = () => {
           loggedIn: true,
         };
         setLoginUser(user);
-        const userStoreInLocalStorage = JSON.stringify(user)
-        localStorage.setItem('loginUser', userStoreInLocalStorage)
+        const userStoreInLocalStorage = JSON.stringify(user);
+        localStorage.setItem("loginUser", userStoreInLocalStorage);
         history.replace(from);
       })
       .catch((error) => {
         console.log(error);
       });
   };
+  const loginByEmail = (event) => {
+    event.preventDefault();
+    signInWithEmailAndPassword(auth, user.email, user.password)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        const newLoginUser = { ...user };
+        setLoginUser(newLoginUser);
+        const userStoreInLocalStorage = JSON.stringify(user);
+        localStorage.setItem("loginUser", userStoreInLocalStorage);
+        history.replace(from);
+        console.log(user);
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorMessage, errorCode);
+      });
+  };
+  const onBlurHandler = (e) => {
+    const newUserInfo = { ...user };
+    newUserInfo[e.target.name] = e.target.value;
+    setUser(newUserInfo);
+  };
+  console.log(user);
   return (
     <div className="container py-5">
       <div className="row mt-3">
         <div className="col-6 m-auto">
           <div className="border rounded p-3">
             <h4 className="mb-4">Login</h4>
-            <form>
+            <form onSubmit={loginByEmail}>
               <div className="mb-3">
                 <input
                   type="email"
+                  name="email"
+                  onBlur={onBlurHandler}
                   className="form-control"
                   id="email"
                   placeholder="Username or Email"
                 />
-                <div id="emailHelp" className="form-text">
-                  We'll never share your email with anyone else.
-                </div>
               </div>
               <div className="mb-3">
                 <input
                   type="password"
+                  name="password"
+                  onBlur={onBlurHandler}
                   className="form-control"
                   id="password"
                   placeholder="Password"

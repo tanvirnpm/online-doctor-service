@@ -62,7 +62,7 @@ const Navbar = () => {
           </ul>
           {loginUser.email ? (
             <div className="dropdown">
-              <span className="nav-item">{loginUser.name.split(" ")[0]}</span>
+              <span className="nav-item">{loginUser.name}</span>
               <button
                 className="btn btn-warning"
                 onClick={() => logOutHandler()}

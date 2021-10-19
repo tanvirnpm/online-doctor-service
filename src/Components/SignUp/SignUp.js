@@ -1,50 +1,72 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
 const SignUp = () => {
+  const auth = getAuth();
+  const [newUser, setNewUser] = useState({});
+  const [user, setUser] = useState({
+    isSignedIn: false,
+    name: "",
+    email: "",
+    password: "",
+    photo: "",
+  });
+  const signUpWithEmail = (event) => {
+    event.preventDefault();
+    createUserWithEmailAndPassword(auth, user.email, user.password)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        console.log("clicked", user);
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+      });
+    console.log("clicked");
+  };
+  const oncBlurHandler = (e) => {
+    const newUserInfo = { ...user };
+    newUserInfo[e.target.name] = e.target.value;
+    setUser(newUserInfo);
+  };
+  console.log(user);
   return (
-    <div className="container">
+    <div className="container my-5">
       <div className="row mt-3">
         <div className="col-6 m-auto">
           <div className="border rounded p-3">
             <h4 className="mb-4">Login</h4>
-            <form>
+            <form onSubmit={() => signUpWithEmail(event)}>
               <div className="mb-3">
                 <input
                   type="text"
                   className="form-control"
                   id="name"
                   placeholder="Name"
+                  name="name"
+                  onBlur={oncBlurHandler}
                 />
-                <div id="emailHelp" className="form-text">
-                  We'll never share your email with anyone else.
-                </div>
               </div>
               <div className="mb-3">
                 <input
                   type="email"
+                  name="email"
                   className="form-control"
                   id="email"
-                  placeholder="Username or Email"
+                  placeholder="Email"
+                  onBlur={oncBlurHandler}
                 />
-                <div id="emailHelp" className="form-text">
-                  We'll never share your email with anyone else.
-                </div>
               </div>
               <div className="mb-3">
                 <input
                   type="password"
+                  name="password"
                   className="form-control"
                   id="password"
                   placeholder="Password"
-                />
-              </div>
-              <div className="mb-3">
-                <input
-                  type="password"
-                  className="form-control"
-                  id="confirm-password"
-                  placeholder="Confirm Password"
+                  onBlur={oncBlurHandler}
                 />
               </div>
               <button type="submit" className="btn btn-primary w-100">
