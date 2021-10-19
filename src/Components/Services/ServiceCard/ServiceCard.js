@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const ServiceCard = () => {
     return (
@@ -7,7 +8,7 @@ const ServiceCard = () => {
             <div className="card-body">
                 <h5 className="card-title">Sexology</h5>
                 <p className="card-text">One can consult a sexologist to deal and overcome sex-related problems such as erectile dysfunction, painful intercourse, pain after intercourse, low sex drive, intense sexual behavior etc. </p>
-                <button className="btn btn-warning">Consult</button>
+                <button className="btn btn-warning"><Link to="/service-id">Details</Link></button>
             </div>
         </div>
     );

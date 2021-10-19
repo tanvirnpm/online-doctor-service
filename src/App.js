@@ -3,6 +3,7 @@ import Footer from "./Components/Footer/Footer";
 import Header from "./Components/Header/Header";
 import Home from "./Components/Home/Home";
 import NotFound from "./Components/NotFound/NotFound";
+import ServiceDetails from "./Components/Services/ServiceDetails/ServiceDetails";
 
 function App() {
   return (
@@ -12,8 +13,8 @@ function App() {
         <Route exact path="/">
           <Home />
         </Route>
-        <Route path="">
-          <Home />
+        <Route path="/service-id">
+          <ServiceDetails />
         </Route>
         <Route path="">
           <Home />

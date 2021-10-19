@@ -12,10 +12,10 @@ const Footer = () => {
                     <div className="col-6">
                         <h4>Follow <b>Virtual eClinic</b></h4>
                         <div className="d-flex">
-                            <i className="fab fa-facebook-f"></i>
-                            <i className="fab fa-twitter"></i>
-                            <i className="fab fa-instagram"></i>
-                            <i className="fab fa-youtube"></i>
+                            <i style={{fontSize: '35px', margin: '10px'}} className="fab fa-facebook-f"></i>
+                            <i style={{fontSize: '35px', margin: '10px'}} className="fab fa-twitter"></i>
+                            <i style={{fontSize: '35px', margin: '10px'}} className="fab fa-instagram"></i>
+                            <i style={{fontSize: '35px', margin: '10px'}} className="fab fa-youtube"></i>
                         </div>
                     </div>
                 </div>
