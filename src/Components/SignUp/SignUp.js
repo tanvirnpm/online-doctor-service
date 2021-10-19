@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 
 const SignUp = () => {
   const auth = getAuth();
@@ -17,12 +17,14 @@ const SignUp = () => {
     createUserWithEmailAndPassword(auth, user.email, user.password)
       .then((userCredential) => {
         // Signed in
-        const user = userCredential.user;
-        console.log("clicked", user);
+        const submitUser = userCredential.user;
+        console.log("clicked", submitUser);
+        updateProfileName(user.name)
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
+        console.log('user not sign in')
       });
     console.log("clicked");
   };
@@ -31,13 +33,25 @@ const SignUp = () => {
     newUserInfo[e.target.name] = e.target.value;
     setUser(newUserInfo);
   };
+  const updateProfileName = (name) => {
+    updateProfile(auth.currentUser, {
+        displayName: name
+      }).then(() => {
+        // Profile updated!
+        // ...
+        console.log('update user name successfully...')
+      }).catch((error) => {
+        // An error occurred
+        // ...
+      });
+  }
   console.log(user);
   return (
     <div className="container my-5">
       <div className="row mt-3">
         <div className="col-6 m-auto">
           <div className="border rounded p-3">
-            <h4 className="mb-4">Login</h4>
+            <h4 className="mb-4">Registration</h4>
             <form onSubmit={() => signUpWithEmail(event)}>
               <div className="mb-3">
                 <input

@@ -46,10 +46,16 @@ const SignIn = () => {
     signInWithEmailAndPassword(auth, user.email, user.password)
       .then((userCredential) => {
         // Signed in
-        const user = userCredential.user;
-        const newLoginUser = { ...user };
-        setLoginUser(newLoginUser);
-        const userStoreInLocalStorage = JSON.stringify(user);
+        const afterLoginUser = userCredential.user;
+        const { displayName, email, photoURL } = afterLoginUser;
+        const newEmailLoginUser = {
+          name: displayName,
+          photo: photoURL,
+          email: email,
+          loggedIn: true,
+        };
+        setLoginUser(newEmailLoginUser);
+        const userStoreInLocalStorage = JSON.stringify(newEmailLoginUser);
         localStorage.setItem("loginUser", userStoreInLocalStorage);
         history.replace(from);
         console.log(user);
@@ -65,7 +71,8 @@ const SignIn = () => {
     newUserInfo[e.target.name] = e.target.value;
     setUser(newUserInfo);
   };
-  console.log(user);
+//   console.log(user);
+  console.log('login user',loginUser);
   return (
     <div className="container py-5">
       <div className="row mt-3">
