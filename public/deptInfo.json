@@ -3,37 +3,37 @@
         "id": 1,
         "deptName": "Urology",
         "deptLogo": "https://assets.icliniq.com/v2/assets/images/specialityImages-pro/urologist.svg",
-        "deptDetails": ""
+        "deptDetails": "Urology is a part of health care that deals with diseases of the male and female urinary tract (kidneys, ureters, bladder and urethra). It also deals with the male organs that are able to make babies (penis, testes, scrotum, prostate, etc.)."
     },
     {
         "id": 2,
         "deptName": "Sleep Medicine",
         "deptLogo": "https://assets.icliniq.com/v2/assets/images/specialityImages-pro/sleep-medicine-physician.svg",
-        "deptDetails": ""
+        "deptDetails": "Most sleeping pills are classified as sedative hypnotics. That's a specific class of drugs used to go to sleep or stay asleep. Sedative hypnotics include benzodiazepines, barbiturates, and various hypnotics."
     },
     {
         "id": 3,
         "deptName": "Allergy Specialist",
         "deptLogo": "https://assets.icliniq.com/v2/assets/images/specialityImages-pro/allergy-specialist.svg",
-        "deptDetails": ""
+        "deptDetails": "An allergist / immunologist (commonly referred to as an allergist) is a physician specially trained to diagnose, treat and manage allergies, asthma and immunologic disorders including primary immunodeficiency disorders."
     },
     {
         "id": 4,
         "deptName": "Andrology",
         "deptLogo": "https://assets.icliniq.com/v2/assets/images/specialityImages-pro/andrologist.svg",
-        "deptDetails": ""
+        "deptDetails": "Andrology is a medical specialty which deals with the male reproductive system and urological problems found only in men. Andrology is the direct equivalent of gynaecology, but unlike gynaecology, it is not widely recognised as its own distinct speciality."
     },
     {
         "id": 5,
         "deptName": "Audiology",
         "deptLogo": "https://assets.icliniq.com/v2/assets/images/specialityImages-pro/audiologist.svg",
-        "deptDetails": ""
+        "deptDetails": "Audiology (from Latin audīre, to hear; and from Greek -λογία, -logia) is a branch of science that studies hearing, balance, and related disorders. Audiologists treat those with hearing loss and proactively prevent related damage."
     },
     {
         "id": 6,
         "deptName": "Cardiology",
         "deptLogo": "https://assets.icliniq.com/v2/assets/images/specialityImages-pro/cardiologist.svg",
-        "deptDetails": ""
+        "deptDetails": "Cardiology is the study and treatment of disorders of the heart and the blood vessels. A person with heart disease or cardiovascular disease may be referred to a cardiologist. Cardiology is a branch of internal medicine. ... A cardiologist specializes in diagnosing and treating diseases of the cardiovascular system."
     },
     {
         "id": 7,
@@ -45,18 +45,18 @@
         "id": 8,
         "deptName": "Cardiothoracic Surgery",
         "deptLogo": "https://assets.icliniq.com/v2/assets/images/specialityImages-pro/cardiothoracic-surgeon.svg",
-        "deptDetails": ""
+        "deptDetails": "Cardiothoracic surgery is the field of medicine involved in surgical treatment of organs inside the thoracic cavity — generally treatment of conditions of the heart (heart disease), lungs (lung disease), and other pleural or mediastinal structures."
     },
     {
         "id": 9,
         "deptName": "Dermatology",
         "deptLogo": "https://assets.icliniq.com/v2/assets/images/specialityImages-pro/dermatologist.svg",
-        "deptDetails": ""
+        "deptDetails": "Dermatology is the branch of medicine dealing with the skin. It is a speciality with both medical and surgical aspects. A dermatologist is a specialist medical doctor who manages diseases related to skin, hair, nails, and some cosmetic problems."
     },
     {
         "id": 10,
         "deptName": "Diabetology",
         "deptLogo": "https://assets.icliniq.com/v2/assets/images/specialityImages-pro/diabetologist.svg",
-        "deptDetails": ""
+        "deptDetails": "he Department of Diabetology & Endocrinology of Evercare Hospital Dhaka has gained reputation as a leading centre in clinical endocrinology. The department offers comprehensive diagnosis and management for a wide range of hormonal and metabolic disorders. Under the supervision of experienced Consultant Dr. Abdul Mannan Sarker, who is one of the few endocrinologists of the country, the department provides team-based services by working in close collaboration with specialists in allied disciplines."
     }
 ]
