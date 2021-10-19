@@ -76,7 +76,7 @@ const SignIn = () => {
   return (
     <div className="container py-5">
       <div className="row mt-3">
-        <div className="col-6 m-auto">
+        <div className="col-md-6 m-auto">
           <div className="border rounded p-3">
             <h4 className="mb-4">Login</h4>
             <form onSubmit={loginByEmail}>

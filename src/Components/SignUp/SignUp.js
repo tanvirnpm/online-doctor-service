@@ -1,8 +1,20 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { getAuth, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import React, { useContext, useState } from "react";
+import { Link, useLocation, useHistory } from "react-router-dom";
+import {
+  getAuth,
+  GoogleAuthProvider,
+  createUserWithEmailAndPassword,
+  updateProfile,
+  signInWithPopup,
+} from "firebase/auth";
+import { UserContext } from "../../App";
 
 const SignUp = () => {
+  const googleProvider = new GoogleAuthProvider();
+  const location = useLocation();
+  const history = useHistory();
+  let { from } = location.state || { from: { pathname: "/" } };
+  const [loginUser, setLoginUser] = useContext(UserContext);
   const auth = getAuth();
   const [newUser, setNewUser] = useState({});
   const [user, setUser] = useState({
@@ -12,6 +24,25 @@ const SignUp = () => {
     password: "",
     photo: "",
   });
+  const loggedInByGoogle = () => {
+    return signInWithPopup(auth, googleProvider)
+      .then((result) => {
+        const { displayName, email, photoURL } = result.user;
+        const user = {
+          name: displayName,
+          photo: photoURL,
+          email: email,
+          loggedIn: true,
+        };
+        setLoginUser(user);
+        const userStoreInLocalStorage = JSON.stringify(user);
+        localStorage.setItem("loginUser", userStoreInLocalStorage);
+        history.replace(from);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   const signUpWithEmail = (event) => {
     event.preventDefault();
     createUserWithEmailAndPassword(auth, user.email, user.password)
@@ -19,12 +50,12 @@ const SignUp = () => {
         // Signed in
         const submitUser = userCredential.user;
         console.log("clicked", submitUser);
-        updateProfileName(user.name)
+        updateProfileName(user.name);
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        console.log('user not sign in')
+        console.log("user not sign in");
       });
     console.log("clicked");
   };
@@ -35,21 +66,23 @@ const SignUp = () => {
   };
   const updateProfileName = (name) => {
     updateProfile(auth.currentUser, {
-        displayName: name
-      }).then(() => {
+      displayName: name,
+    })
+      .then(() => {
         // Profile updated!
         // ...
-        console.log('update user name successfully...')
-      }).catch((error) => {
+        console.log("update user name successfully...");
+      })
+      .catch((error) => {
         // An error occurred
         // ...
       });
-  }
+  };
   console.log(user);
   return (
     <div className="container my-5">
       <div className="row mt-3">
-        <div className="col-6 m-auto">
+        <div className="col-md-6 m-auto">
           <div className="border rounded p-3">
             <h4 className="mb-4">Registration</h4>
             <form onSubmit={() => signUpWithEmail(event)}>
@@ -120,7 +153,7 @@ const SignUp = () => {
           </div>
           <div
             style={{ cursor: "pointer" }}
-            onClick={() => signInWithGoogle(googleProvider)}
+            onClick={() => loggedInByGoogle(googleProvider)}
             className="w-75 m-auto mt-1"
           >
             <div className="border rounded-pill position-relative">

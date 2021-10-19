@@ -13,8 +13,8 @@ const Navbar = () => {
     signOut(auth)
       .then(() => {
         // Sign-out successful.
-        setLoginUser({})
-        localStorage.removeItem('loginUser')
+        setLoginUser({});
+        localStorage.removeItem("loginUser");
       })
       .catch((error) => {
         // An error happened.
@@ -38,7 +38,7 @@ const Navbar = () => {
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
+          <ul className="navbar-nav text-center ms-auto mb-2 mb-lg-0">
             <li className="nav-item">
               <Link className="nav-link" aria-current="page" to="/">
                 Home
@@ -61,19 +61,21 @@ const Navbar = () => {
             </li>
           </ul>
           {loginUser.email ? (
-            <div className="dropdown">
+            <div className="dropdown d-flex align-items-center justify-content-center">
               <span className="nav-item">{loginUser.name}</span>
               <button
-                className="btn btn-warning"
+                className="btn btn-warning ms-3"
                 onClick={() => logOutHandler()}
               >
                 Logout
               </button>
             </div>
           ) : (
-            <Link to="/sign-in" className="btn btn-warning">
-              Login
-            </Link>
+            <div className="d-flex align-items-center justify-content-center">
+              <Link to="/sign-in" className="btn btn-warning">
+                Login
+              </Link>
+            </div>
           )}
         </div>
       </div>

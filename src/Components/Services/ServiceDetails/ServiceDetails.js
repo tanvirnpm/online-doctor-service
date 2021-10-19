@@ -17,8 +17,8 @@ const ServiceDetails = () => {
     // console.log(id, 'services', services)
     return (
         <div className="container my-3">
-            <div className="row">
-                <div className="col-6">
+            <div className="row g-3">
+                <div className="col-md-6">
                     <div className="card">
                         <img style={{ width: "100px" }} src={services.deptLogo} className="card-img-top mx-auto mt-3" alt="" />
                         <div className="card-body">
@@ -36,7 +36,7 @@ const ServiceDetails = () => {
                         </div>
                     </div>
                 </div>
-                <div className="col-6">
+                <div className="col-md-6">
                     <div className="card">
                         <div className="card-body">
                             <h3 className="card-title">You can choose your <b className="bg-warning rounded-pill px-3">{services.deptName}</b> Specialist Doctor</h3>

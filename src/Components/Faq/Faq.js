@@ -3,9 +3,9 @@ import React from "react";
 const Faq = () => {
   return (
     <div className="container my-5">
-      <h2 className="text-center">Have Doubts? Read FAQs</h2>
+      <h2 className="text-center mb-3">Have Doubts? Read FAQs</h2>
       <div className="row justify-content-center">
-        <div className="col-6">
+        <div className="col-md-6">
           <div className="accordion" id="accordionExample">
             <div className="accordion-item">
               <h2 className="accordion-header" id="headingOne">
