@@ -1,17 +1,29 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router';
 import ConsultOur from '../../ConsultOur/ConsultOur';
 import SpecialistDoctor from './SpecialistDoctor/SpecialistDoctor';
 
 const ServiceDetails = () => {
+    const { id } = useParams();
+    const [services, setServices] = useState([]);
+    useEffect(()=>{
+        fetch('../deptInfo.json')
+        .then(res=>res.json())
+        .then(data=>{
+            const service = data.filter(item=>item.id == id);
+            setServices(service[0])
+        })
+    },[])
+    // console.log(id, 'services', services)
     return (
         <div className="container my-3">
             <div className="row">
                 <div className="col-6">
                     <div className="card">
-                        <img style={{ width: "100px" }} src="https://assets.icliniq.com/v2/assets/images/specialityImages-pro/sexologist.svg" className="card-img-top mx-auto mt-3" alt="" />
+                        <img style={{ width: "100px" }} src={services.deptLogo} className="card-img-top mx-auto mt-3" alt="" />
                         <div className="card-body">
-                            <h5 className="card-title text-center">Sexology</h5>
-                            <p className="card-text text-justify">One can consult a sexologist to deal and overcome sex-related problems such as erectile dysfunction, painful intercourse, pain after intercourse, low sex drive, intense sexual behavior etc. </p>
+                            <h5 className="card-title text-center">{services.deptName}</h5>
+                            <p className="card-text text-center">{services.deptDetails}</p>
 
                             <h3 className="text-center bg-warning rounded-pill p-1">Make Your Appoinment</h3>
                             <div>
@@ -27,7 +39,7 @@ const ServiceDetails = () => {
                 <div className="col-6">
                     <div className="card">
                         <div className="card-body">
-                            <h3 className="card-title">You can choose your <b>Sexology</b> Specialist Doctor</h3>
+                            <h3 className="card-title">You can choose your <b className="bg-warning rounded-pill px-3">{services.deptName}</b> Specialist Doctor</h3>
                             <SpecialistDoctor />
                             <SpecialistDoctor />
                             <SpecialistDoctor />

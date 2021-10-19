@@ -8,7 +8,7 @@ const Services = () => {
             .then(res => res.json())
             .then(data => setServices(data))
     },[])
-    console.log('service',services)
+    // console.log('service',services)
     return (
         <div className="container my-5">
             <div className="row">
@@ -19,33 +19,9 @@ const Services = () => {
             </div>
             <div className="row g-3">
                 {
-                    services.map(service =><div className="col-3"><ServiceCard service={service}/></div>)
+                    services.map(service =><div key={service.id} className="col-md-6 col-lg-3"><ServiceCard service={service}/></div>)
                 }
-
-                <div className="col-3">
-                    <ServiceCard />
-                </div>
-                <div className="col-3">
-                    <ServiceCard />
-                </div>
-                <div className="col-3">
-                    <ServiceCard />
-                </div>
-                <div className="col-3">
-                    <ServiceCard />
-                </div>
-                <div className="col-3">
-                    <ServiceCard />
-                </div>
-                <div className="col-3">
-                    <ServiceCard />
-                </div>
-                <div className="col-3">
-                    <ServiceCard />
-                </div>
-                <div className="col-3">
-                    <ServiceCard />
-                </div>
+                
             </div>
         </div>
     );
