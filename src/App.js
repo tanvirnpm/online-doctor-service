@@ -5,6 +5,8 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
+import AboutUs from "./Components/AboutUs/AboutUs";
+import Faq from "./Components/Faq/Faq";
 import Footer from "./Components/Footer/Footer";
 import Header from "./Components/Header/Header";
 import Home from "./Components/Home/Home";
@@ -66,6 +68,12 @@ function App() {
           </Route>
           <Route path="/sign-up">
             <SignUp />
+          </Route>
+          <Route path="/about-us">
+            <AboutUs />
+          </Route>
+          <Route path="/faq">
+            <Faq />
           </Route>
           <Route path="*">
             <NotFound />

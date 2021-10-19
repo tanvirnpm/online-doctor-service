@@ -49,6 +49,16 @@ const Navbar = () => {
                 Services
               </Link>
             </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/about-us">
+                About Us
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/faq">
+                Faq
+              </Link>
+            </li>
           </ul>
           {loginUser.email ? (
             <div className="dropdown">

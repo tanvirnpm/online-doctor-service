@@ -13,7 +13,7 @@ const Services = () => {
         <div className="container my-5">
             <div className="row">
                 <div className="col-12">
-                    <h1 className="text-center">Touch Your Service</h1>
+                    <h1 className="text-center">Touch Our Service</h1>
                     <p className="text-center">With 80+ specialties covered, get medical advice and medical second opinion to any of your health concerns under one roof.</p>
                 </div>
             </div>
