@@ -1,7 +1,14 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import ServiceCard from './ServiceCard/ServiceCard';
 
 const Services = () => {
+    const [services, setServices] = useState([]);
+    useEffect(() => {
+        fetch('./deptInfo.json')
+            .then(res => res.json())
+            .then(data => setServices(data))
+    },[])
+    console.log('service',services)
     return (
         <div className="container my-5">
             <div className="row">
@@ -11,32 +18,33 @@ const Services = () => {
                 </div>
             </div>
             <div className="row g-3">
+                {
+                    services.map(service =><div className="col-3"><ServiceCard service={service}/></div>)
+                }
+
                 <div className="col-3">
-                    <ServiceCard/>
+                    <ServiceCard />
                 </div>
                 <div className="col-3">
-                    <ServiceCard/>
+                    <ServiceCard />
                 </div>
                 <div className="col-3">
-                    <ServiceCard/>
+                    <ServiceCard />
                 </div>
                 <div className="col-3">
-                    <ServiceCard/>
+                    <ServiceCard />
                 </div>
                 <div className="col-3">
-                    <ServiceCard/>
+                    <ServiceCard />
                 </div>
                 <div className="col-3">
-                    <ServiceCard/>
+                    <ServiceCard />
                 </div>
                 <div className="col-3">
-                    <ServiceCard/>
+                    <ServiceCard />
                 </div>
                 <div className="col-3">
-                    <ServiceCard/>
-                </div>
-                <div className="col-3">
-                    <ServiceCard/>
+                    <ServiceCard />
                 </div>
             </div>
         </div>

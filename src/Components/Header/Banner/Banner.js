@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Banner = () => {
     return (
@@ -7,7 +8,7 @@ const Banner = () => {
                 <div className="col-6">
                     <h1><span className="d-block text-warning">Consult top doctors</span> effortlessly</h1>
                     <p>Get 24/7 online consultations with the best doctors without breaking a sweat and your bank.</p>
-                    <button className="btn btn-warning">Start a consult now!</button>
+                    <Link to="/services" className="btn btn-warning">Start a consult now!</Link>
                     
                 </div>
                 <div className="col-6">

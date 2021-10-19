@@ -4,6 +4,9 @@ import Header from "./Components/Header/Header";
 import Home from "./Components/Home/Home";
 import NotFound from "./Components/NotFound/NotFound";
 import ServiceDetails from "./Components/Services/ServiceDetails/ServiceDetails";
+import Services from "./Components/Services/Services";
+import SignIn from "./Components/SignIn/SignIn";
+import SignUp from "./Components/SignUp/SignUp";
 
 function App() {
   return (
@@ -16,14 +19,14 @@ function App() {
         <Route path="/service-id">
           <ServiceDetails />
         </Route>
-        <Route path="">
-          <Home />
+        <Route path="/services">
+          <Services />
         </Route>
-        <Route path="">
-          <Home />
+        <Route path="/sign-in">
+          <SignIn />
         </Route>
-        <Route path="">
-          <Home />
+        <Route path="/sign-up">
+          <SignUp />
         </Route>
         <Route path="*">
           <NotFound />
